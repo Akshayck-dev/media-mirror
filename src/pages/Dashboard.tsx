@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { NavLink } from 'react-router-dom';
 import { 
   Calendar, 
@@ -21,11 +21,7 @@ import useStudioStore from '../store/studioStore';
 import Card from '../components/ui/Card';
 
 export const Dashboard: React.FC = () => {
-  const { bookings, payments, income, expenses, clients, fetchAllData } = useStudioStore();
-
-  useEffect(() => {
-    fetchAllData();
-  }, [fetchAllData]);
+  const { bookings, payments, income, expenses, clients } = useStudioStore();
 
   // Calculations
   const metrics = useMemo(() => {

@@ -15,7 +15,7 @@ import exportToExcel from '../lib/exportExcel';
 import confetti from 'canvas-confetti';
 
 export const Payments: React.FC = () => {
-  const { bookings, payments, createPayment, fetchAllData } = useStudioStore();
+  const { bookings, payments, createPayment } = useStudioStore();
 
   const [searchTerm, setSearchTerm] = useState('');
   const [methodFilter, setMethodFilter] = useState('All');
@@ -32,10 +32,6 @@ export const Payments: React.FC = () => {
   // Pagination states
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
-
-  useEffect(() => {
-    fetchAllData();
-  }, [fetchAllData]);
 
   // Reset modal states when closed
   const resetForm = () => {

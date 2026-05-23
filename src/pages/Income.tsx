@@ -15,7 +15,7 @@ import TransactionForm from '../components/forms/TransactionForm';
 import exportToExcel from '../lib/exportExcel';
 
 export const Income: React.FC = () => {
-  const { income, createIncome, deleteIncome, fetchAllData } = useStudioStore();
+  const { income, createIncome, deleteIncome } = useStudioStore();
 
   const [searchTerm, setSearchTerm] = useState('');
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
@@ -24,10 +24,6 @@ export const Income: React.FC = () => {
   // Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
-
-  useEffect(() => {
-    fetchAllData();
-  }, [fetchAllData]);
 
   // Form submission
   const handleAddIncome = async (formData: any) => {

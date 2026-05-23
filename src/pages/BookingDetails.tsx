@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useParams, useNavigate, NavLink } from 'react-router-dom';
 import { 
   ArrowLeft, 
@@ -25,15 +25,11 @@ import confetti from 'canvas-confetti';
 export const BookingDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { bookings, updateBooking, createPayment, fetchAllData } = useStudioStore();
+  const { bookings, updateBooking, createPayment } = useStudioStore();
 
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
   const [showInvoiceNotification, setShowInvoiceNotification] = useState(false);
-
-  useEffect(() => {
-    fetchAllData();
-  }, [fetchAllData]);
 
   // Find active booking
   const booking = useMemo(() => {

@@ -17,7 +17,7 @@ import BookingForm from '../components/forms/BookingForm';
 import exportToExcel from '../lib/exportExcel';
 
 export const Bookings: React.FC = () => {
-  const { bookings, createBooking, deleteBooking, fetchAllData } = useStudioStore();
+  const { bookings, createBooking, deleteBooking } = useStudioStore();
   const navigate = useNavigate();
 
   // Search & Filter state
@@ -31,10 +31,6 @@ export const Bookings: React.FC = () => {
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
-
-  useEffect(() => {
-    fetchAllData();
-  }, [fetchAllData]);
 
   // Handle Booking Creation
   const handleCreateBooking = async (formData: any) => {

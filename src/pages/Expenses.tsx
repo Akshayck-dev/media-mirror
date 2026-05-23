@@ -15,7 +15,7 @@ import TransactionForm from '../components/forms/TransactionForm';
 import exportToExcel from '../lib/exportExcel';
 
 export const Expenses: React.FC = () => {
-  const { expenses, createExpense, deleteExpense, fetchAllData } = useStudioStore();
+  const { expenses, createExpense, deleteExpense } = useStudioStore();
 
   const [searchTerm, setSearchTerm] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('All');
@@ -25,10 +25,6 @@ export const Expenses: React.FC = () => {
   // Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
-
-  useEffect(() => {
-    fetchAllData();
-  }, [fetchAllData]);
 
   // Form submission
   const handleAddExpense = async (formData: any) => {

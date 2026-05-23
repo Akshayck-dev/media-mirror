@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --color-studio-sidebar: #111827;
+  --color-studio-accent: #4F46E5;
+  --color-studio-gold: #B5945B;
+  --color-studio-gold-hover: #967946;
+  --color-studio-bg: #F9FAFB;
+  --color-studio-card: #FFFFFF;
+  --color-studio-text: #111827;
+  --color-studio-muted: #6B7280;
+  --color-studio-border: #E5E7EB;
+
+  --font-sans: 'Inter', sans-serif;
+
+  --shadow-premium: 0 4px 20px -2px rgba(17, 24, 39, 0.05), 0 2px 6px -1px rgba(17, 24, 39, 0.02);
+  --shadow-card: 0 10px 30px -5px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.01);
+}
+
+@utility text-page-title {
+  font-size: 32px !important;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--color-studio-text);
+}
+
+@utility text-section-title {
+  font-size: 24px !important;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: var(--color-studio-text);
+}
+
+@utility text-table-body {
+  font-size: 18px !important;
+  color: var(--color-studio-text);
+}
+
+@utility form-label {
+  font-size: 18px !important;
+  font-weight: 500;
+  color: var(--color-studio-text);
+  margin-bottom: 8px;
+  display: block;
+}
+
+@utility btn-text {
+  font-size: 18px !important;
+  font-weight: 500;
+}
+
+body {
+  background-color: var(--color-studio-bg);
+  color: var(--color-studio-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+  user-select: none;
+  font-size: 18px;
+}
+
+/* Form typography rules */
+label, input, select, textarea, button {
+  font-size: 18px !important;
+}
+
+/* Custom premium styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(17, 24, 39, 0.1);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(17, 24, 39, 0.2);
+}
+
+/* Smooth fade and slide animation */
+.page-enter {
+  animation: pageEnter 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  overflow: hidden;
+}

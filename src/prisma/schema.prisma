@@ -1,0 +1,62 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native"]
+}
+
+model Client {
+  id        String    @id @default(uuid())
+  name      String
+  email     String?
+  phone     String?
+  company   String?
+  bookings  Booking[]
+  createdAt DateTime  @default(now())
+}
+
+model Booking {
+  id          String    @id @default(uuid())
+  clientId    String
+  client      Client    @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  eventDate   String    // We store ISO dates as strings for easy SQLite sorting & filtering
+  serviceType String    // Wedding, Pre-Wedding, Engagement, Event Shoot, Family Shoot, Passport Photos, Portrait Shoot, Other
+  location    String?
+  duration    String?
+  status      String    // Pending, Confirmed, Completed
+  totalAmount Float
+  payments    Payment[]
+  createdAt   DateTime  @default(now())
+}
+
+model Payment {
+  id            String   @id @default(uuid())
+  bookingId     String
+  booking       Booking  @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  amount        Float
+  paymentDate   String   // ISO date string
+  paymentMethod String   // Cash, UPI, Bank Transfer, Credit Card, Apple Pay
+  notes         String?
+  createdAt     DateTime @default(now())
+}
+
+model Income {
+  id        String   @id @default(uuid())
+  date      String   // ISO date string
+  source    String
+  amount    Float
+  notes     String?
+  createdAt DateTime @default(now())
+}
+
+model Expense {
+  id        String   @id @default(uuid())
+  date      String   // ISO date string
+  category  String
+  amount    Float
+  notes     String?
+  createdAt DateTime @default(now())
+}
